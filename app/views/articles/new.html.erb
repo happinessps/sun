@@ -1,5 +1,25 @@
-<h1>New Article</h1>
+<h1>Hi my berticle</h1>
 
-<%= render 'form' %>
+<% if @article.errors.any? %>
+<h2> following </h2>
+<ul>
+<% @article.errors.full_messages.each do |msg| %>
+<li><%= msg %></li>
+<% end %>
+</ul>
+<% end %>
 
-<%= link_to 'Back', articles_path %>
+<%= form_for @article do |f| %>
+<p>
+    <%= f.label :title %><br/>
+    <%= f.text_field :title %>
+</p>
+<p>
+    <%= f.label :description %><br/>
+    <%= f.text_area :description %>
+</p>
+<p>
+    
+    <%= f.submit %>
+</p>
+<% end %>
