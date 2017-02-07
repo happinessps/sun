@@ -34,6 +34,13 @@ class ArticlesController < ApplicationController
        @article = Article.find(params[:id])
    end
    
+   def destroy
+      @article = Article.find(params[:id]) 
+      @article.destroy
+      flash[:notice] = "성공적으로 지워졌습니다! "
+      redirect_to articles_path
+   end
+   
    private
    def article_params
        params.require(:article).permit(:title, :description)
